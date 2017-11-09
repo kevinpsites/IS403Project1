@@ -13,5 +13,11 @@ namespace Project1.Controllers
         {
             return View();
         }
+
+        // GET: FreelancerBio
+        public ActionResult Bio()
+        {
+            return View();
+        }
     }
 }
