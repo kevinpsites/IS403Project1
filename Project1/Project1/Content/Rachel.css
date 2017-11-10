@@ -1,0 +1,24 @@
+﻿.homejumbotron {
+    background-image: url('../Images/bouquet.jpg');
+    
+}
+
+.titlewebspread {
+    font-family: Harrington;
+    color: white;
+}
+
+.subtitlewebspread  {
+    font-family: 'Gill Sans MT';
+    color: black;
+    width: 55%;
+
+}
+
+.homeimage  {
+    width: 25%;
+    height: auto;
+    border: 2px;
+    border-style: solid;
+    border-color: dimgrey;
+}
