@@ -1,17 +1,47 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "Contact WEDSPREAD";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<html>
+<body>
+    <h2>@ViewBag.Title.</h2>
+    <address>
+        Our Phone Number is: (801)555-5555<br /> <br />
+        Shoot us an email at WEDSPREAD@wedspread.com<br />
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    </address>
+
+    <form style="">
+        <div class="row">
+            <div class="col-md-6">
+                First name:
+                <input type="text" name="firstname" size="45"><br>
+            </div>
+            <div class="col-md-6">
+                Last name:
+                <input type="text" name="lastname" size="30"><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <br /> Email: <input type="text" name="email" size="60" style="width:400px"><br>
+            </div>
+        </div>
+        Topic:<br>
+        <select name="Options">
+            <option value="music">Bands</option>
+            <option value="pics">Photographers</option>
+            <option value="vids">Videographers</option>
+            <option value="flowers">Florists</option>
+            <option value="cake">Cake</option>
+            <option value="food">Caterers</option>
+            <option value="place">Venues</option>
+        </select><br /><br />
+        <textarea name="message" rows="20" cols="45">
+        your message goes here:
+    </textarea><br /><br />
+
+        <input type="reset" value="Submit">
+    </form>
+</body>
+</html>
