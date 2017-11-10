@@ -1,10 +1,57 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<link href="~/Content/Rachel.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
 
-<div class="jumbotron">
-    <h1>Wedspread</h1>
-    <p class="lead">Weddings. Engagements. Dinners. Special Ocassions. Parties. Receptions. Events. Activities. Dates.</p>
+<div class="jumbotron homejumbotron">
+    <h1 class="titlewebspread">Wedspread</h1>
+    <p class="lead subtitlewebspread">Weddings. Engagements. Dinners. Special Ocassions. Parties. Receptions. Events. Activities. Dates.</p>
     <p><a href="@Url.Action("Index", "FreeLance")" class="btn btn-primary btn-lg">Book Now &raquo;</a></p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <p>Weddings</p>
+            <img class="img-responsive homeimage" src="~/Images/wedding2.jpg" />
+        </div>
+        <div class="col-md-4">
+            <p>Engagements</p>
+            <img class="img-responsive homeimage" src="~/Images/engagement.jpg" />
+        </div>
+        <div class="col-md-4">
+            <p>Dinners</p>
+            <img class="img-responsive homeimage" src="~/Images/dinner.jpg" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <p>Special Ocassions</p>
+            <img class="img-responsive homeimage" src="~/Images/specialocassion.jpg" />
+        </div>
+        <div class="col-md-4">
+            <p>Parties</p>
+            <img class="img-responsive homeimage" src="~/Images/party.jpg" />
+        </div>
+        <div class="col-md-4">
+            <p>Receptions</p>
+            <img class="img-responsive homeimage" src="~/Images/reception.jpg" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <p>Events</p>
+            <img class="img-responsive homeimage" src="~/Images/event.jpg" />
+        </div>
+        <div class="col-md-4">
+            <p>Activities</p>
+            <img class="img-responsive homeimage" src="~/Images/activity.jpg" />
+        </div>
+        <div class="col-md-4">
+            <p>Dates</p>
+            <img class="img-responsive homeimage" src="~/Images/date.jpg" />
+        </div>
+    </div>
 </div>
 
