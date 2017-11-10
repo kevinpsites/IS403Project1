@@ -1,0 +1,60 @@
+﻿body {
+}
+.col-container {
+    display: table; /* Make the container element behave like a table */
+    width: 100%; /* Set full-width to expand the whole page */
+}
+
+.col {
+    display: table-cell; /* Make elements inside the container behave like table cells */
+    padding:2em;
+}
+.smcol{
+
+    padding-left: 1em;
+    
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 6px 10px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    border-radius:4px;
+}
+
+
+
+textarea {
+    width: 100%;
+    padding: 6px 10px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.form-group{
+    max-width: 100%;
+    width:100%
+
+}
+
+.basic{
+    border-bottom:solid;
+    line-height:1;
+
+}
+
+.info{
+
+    background-color:antiquewhite;
+}
+
+.message{
+    max-width:100%;
+    width:100%
+}
+
+.control-labal{
+    text-align:left;
+}
