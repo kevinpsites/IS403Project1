@@ -12,7 +12,7 @@ namespace Project1.Controllers
         public static Question q1 = new Question(1);
         public static Question q2 = new Question(2);
         public static Question q3 = new Question(3);
-        public static Dictionary<int, Question> qs = new Dictionary<int, Question>();
+        public Dictionary<int, Question> qs = new Dictionary<int, Question>();
       
 
         // GET: FreeLance

@@ -227,6 +227,7 @@
     <Content Include="Views\FreeLance\Bio.cshtml" />
     <Content Include="Views\FreeLance\Index.cshtml" />
     <Content Include="Views\Shared\Questions.cshtml" />
+    <Content Include="Views\Shared\AnswerForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
