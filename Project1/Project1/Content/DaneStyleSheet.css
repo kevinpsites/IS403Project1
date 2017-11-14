@@ -23,7 +23,14 @@ input[type=text] {
     border-radius:4px;
 }
 
+.callpic{
+    margin-bottom: 2em;
+}
 
+.titlecontact {
+    font-size: large;
+    font-family: cursive;
+}
 
 textarea {
     width: 100%;
@@ -57,4 +64,8 @@ textarea {
 
 .control-labal{
     text-align:left;
+}
+
+.about{
+    font-size:150%;
 }
