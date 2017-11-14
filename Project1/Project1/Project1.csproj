@@ -147,9 +147,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Question.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\BioJS.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -174,6 +176,8 @@
     <Content Include="Images\event1000700.png" />
     <Content Include="Images\most-memorable-wedding-photos-bride-groom-on-phone.original.jpg" />
     <Content Include="Images\outdoor-wedding-featured-image.jpg" />
+    <Content Include="Images\Look It Photography\profile.jpg" />
+    <Content Include="Images\Molly in the Mineshaft\Molly1.jpg" />
     <Content Include="Images\party.jpg" />
     <Content Include="Images\party1000700.png" />
     <Content Include="Images\reception.jpg" />
@@ -224,10 +228,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\FreeLance\Bio.cshtml" />
     <Content Include="Views\FreeLance\Index.cshtml" />
+    <Content Include="Views\Shared\Questions.cshtml" />
+    <Content Include="Views\Shared\AnswerForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

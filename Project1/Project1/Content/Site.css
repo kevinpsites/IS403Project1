@@ -22,3 +22,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+hr.side {
+    border-color: lightgrey;
+    border-width: 2px;
+}
