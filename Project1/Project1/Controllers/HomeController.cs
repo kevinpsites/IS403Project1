@@ -26,5 +26,12 @@ namespace Project1.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        public String Sign_in(FormCollection form)
+        {
+            String email = form["Email address"].ToString();
+            return "Signing in : " + email;
+        }
     }
 }
