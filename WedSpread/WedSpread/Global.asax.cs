@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WedSpread.Models;
+using WedSpread.DAL;
+using System.Data.Entity;
 
 namespace WedSpread
 {
@@ -12,6 +15,8 @@ namespace WedSpread
     {
         protected void Application_Start()
         {
+            Database.SetInitializer<IS403Project2Context>(null);
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
