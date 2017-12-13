@@ -13,6 +13,7 @@ namespace WedSpread.DAL
         {
             
         }
+
         public DbSet<Users> User { get; set; }
         public DbSet<Roles> Role { get; set; }
         public DbSet<Questions> Question { get; set; }
