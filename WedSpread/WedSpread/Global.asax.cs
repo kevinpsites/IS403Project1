@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using WedSpread.Models;
-using WedSpread.DAL;
+
 using System.Data.Entity;
 
 namespace WedSpread
