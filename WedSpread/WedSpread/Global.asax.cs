@@ -15,7 +15,7 @@ namespace WedSpread
     {
         protected void Application_Start()
         {
-            Database.SetInitializer<IS403Project2Context>(null);
+            
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

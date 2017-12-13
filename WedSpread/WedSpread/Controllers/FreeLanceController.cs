@@ -4,30 +4,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Project1.Models;
+
 
 namespace Project1.Controllers
 {
     public class FreeLanceController : Controller
     {
-        //creation of 3 question objects to store data and creation of dictionary to store it in.
-        public static Question q1 = new Question(1);
-        public static Question q2 = new Question(2);
-        public static Question q3 = new Question(3);
-        public Dictionary<int, Question> qs = new Dictionary<int, Question>();
+        private IS403Project2Context db = new IS403Project2Context();
+
+        /*  //creation of 3 question objects to store data and creation of dictionary to store it in.
+          public static Question q1 = new Question(1);
+          public static Question q2 = new Question(2);
+          public static Question q3 = new Question(3);
+          public Dictionary<int, Question> qs = new Dictionary<int, Question>();
+          */
 
 
         // GET: FreeLance
         public ActionResult Index()
         {
+            IEnumerable<Freelancer> freelancer = db.Freelancers.ToList();  
 
-            return View();
+            return View(freelancer);
         }
 
         // GET: FreelancerBio
         public ActionResult Bio()
         {
-            //question object with data
+           /* //question object with data
             q1.sQuestion = "What type of music do you guys play?";
             q1.sName = "Greg Anderson";
             q1.dDate = "11/5/2017";
@@ -48,7 +52,7 @@ namespace Project1.Controllers
             //adding question objects to dictionary
             qs.Add(q1.iNumber, q1);
             qs.Add(q2.iNumber, q2);
-            qs.Add(q3.iNumber, q3);
+            qs.Add(q3.iNumber, q3); */
 
             //adding data from other method to viebag to display
             ViewBag.name = TempData["name"];
@@ -57,7 +61,7 @@ namespace Project1.Controllers
             ViewBag.portfolio = TempData["portfolio"];
             ViewBag.faqs = TempData["faqs"];
 
-            return View(qs);
+            return View();
         }
 
         public ActionResult Elevated()
