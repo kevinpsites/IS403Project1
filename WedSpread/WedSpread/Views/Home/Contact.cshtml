@@ -1,17 +1,105 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "Contact Us";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<link href="~/Content/DaneStyleSheet.css" rel="stylesheet" />
 
+<!--Contact page image and text-->
+<div class="row callpic">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <h1 class="text-center titlecontact" style="font-family:'Gill Sans MT'; font-size: 5em">@ViewBag.Title</h1>
+        <img src="~/Images/most-memorable-wedding-photos-bride-groom-on-phone.original.jpg" class="img-circle center-block img-responsive" style="width:75%" alt="Wedding Contact">
+    </div>
+    <div class="col-md-3"></div>
+</div>
 <address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
+    <br /><br />
+    We are always trying to improve the WEDSPREAD experience.
+    We would love to hear your feedback and answer any questions you might have. Please fill out the following form, shoot us an email, or give us a call.
+
+
+    <br /> <br />
+
 </address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<!--Contact form and contact info on the side-->
+<div class="container-fluid">
+    <div class="row form-horizontal">
+        <div class="container col-md-9">
+            <form name="contactform" method="post" action="send_form_email.php">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-3 col-md-3">
+                            <label for="first_name">First name:</label>
+                            <input type="text" class="form-control" name="first_name" maxlength="50" size="30" id="contact">
+                        </div>
+                        <div class="col-xs-12 col-sm-3 col-md-3">
+                            <label for="last_name">Last Name:</label>
+                            <input type="text" class="form-control" name="last_name" maxlength="50" size="30" id="contact">
+                        </div>
+
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <label for="email">Email:</label>
+                            <input type="text" class="form-control" name="email" maxlength="80" size="30" id="contact">
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-2 col-md-2">
+                            <label for="telephone">Category:</label>
+                            <select class="form-control " style="margin-top:5px" id="Cat">
+                                <option>Bands</option>
+                                <option>Photography</option>
+                                <option>Videography</option>
+                                <option>Florist</option>
+                                <option>Cakes</option>
+                                <option>Venues</option>
+                                <option>Caterers</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="padding-top: 15px;">
+                    <div class="col-xs-6 col-sm-6 col-md-2">
+                        <label for="comments">Message</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <textarea name="comments" class="form-control message" maxlength="1000" cols="25" rows="6" id="contact"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="padding-top: 15px;">
+                    <div class="col-xs-4">
+                        <div class="col-xs-4">
+                            <button type="reset" value="submit" class="btn btn-primary btn-lg" style="background-color: #3885c9" id="panel-content">Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+        <!--column with phone number and email-->
+        <div class="col-md-3">
+            <div class="basic">
+                <p style="line-height:1.5">Phone:</p>
+                <p style="line-height:1.5">(801)555-5555</p>
+            </div>
+            <div class="basic">
+                <br /><p style="line-height:1.5">Email:</p>
+                <a href="mailto:wedspread@gmail.com" style="line-height:1.5">wedspread@gmail.com</a>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+<!--End of contact form-->

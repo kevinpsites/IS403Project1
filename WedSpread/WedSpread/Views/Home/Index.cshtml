@@ -1,31 +1,123 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/RachelStyles.css" rel="stylesheet" />
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<!--Main Jumbootron-->
+<div class="jumbotron homejumbotron">
+    <h1 class="titlewebspread" style="color:white; font-family:'Gill Sans MT';">Wedspread</h1>
+    <p class="lead subtitlewebspread">Weddings. Engagements. Dinners. Special Ocassions. Parties. Receptions. Events. Activities. Dates.</p>
+    <p><a href="@Url.Action("Index", "FreeLance")" class="btn btn-primary btn-lg">Book Now &raquo;</a></p>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<!--Columns with action links to freelancers-->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4 imagebox2">
+            <a href="@Url.Action("Index", "FreeLance")" class="thumbnail">
+                <div class="caption homecaption">
+                    Weddings
+                </div>
+                <div class="image">
+                    <img class="img-responsive" src="~/Images/wedding3.png" />
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4">
+            <a href="@Url.Action("Index", "FreeLance")" class="thumbnail">
+                <div class="caption homecaption">
+                    Engagements
+                </div>
+                <div class="image">
+                    <img class="img-responsive" src="~/Images/engagement1000700.png" />
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4">
+            <a href="@Url.Action("Index", "FreeLance")" class="thumbnail">
+                <div class="caption homecaption">
+                    Dinners
+                </div>
+                <div class="image">
+                    <img class="img-responsive" src="~/Images/dinner1000700.png" />
+                </div>
+            </a>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="row">
+        <div class="col-xs-4 imagebox2">
+            <a href="@Url.Action("Index", "FreeLance")" class="thumbnail">
+                <div class="caption homecaption">
+                    Special Ocassions
+                </div>
+                <div class="image">
+                    <img class="img-responsive" src="~/Images/specialocassion1000700.png" />
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4">
+            <a href="@Url.Action("Index", "FreeLance")" class="thumbnail">
+                <div class="caption homecaption">
+                    Parties
+                </div>
+                <div class="image">
+                    <img class="img-responsive" src="~/Images/party1000700.png" />
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4">
+            <a href="@Url.Action("Index", "FreeLance")" class="thumbnail">
+                <div class="caption homecaption">
+                    Receptions
+                </div>
+                <div class="image">
+                    <img class="img-responsive" src="~/Images/reception1000700.png" />
+                </div>
+            </a>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="row">
+        <div class="col-xs-4 imagebox2">
+            <a href="@Url.Action("Index", "FreeLance")" class="thumbnail">
+                <div class="caption homecaption">
+                    Events
+                </div>
+                <div class="image">
+                    <img class="img-responsive" src="~/Images/event1000700.png" />
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4">
+            <a href="@Url.Action("Index", "FreeLance")" class="thumbnail">
+                <div class="caption homecaption">
+                    Activities
+                </div>
+                <div class="image">
+                    <img class="img-responsive" src="~/Images/activity1000700.png" />
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4">
+            <a href="@Url.Action("Index", "FreeLance")" class="thumbnail">
+                <div class="caption homecaption">
+                    Dates
+                </div>
+                <div class="image">
+                    <img class="img-responsive full-width" src="~/Images/date1000700.png" />
+                </div>
+            </a>
+        </div>
     </div>
 </div>
+
+<!----<div class="col-sm-6">
+    <a href="#" class="thumbnail">
+        <div class="caption">
+            title<br />3 x bekeken
+        </div>
+        <div class="image">
+            <img src="" class="img img-responsive full-width" />
+        </div>
+    </a>
+</div>-->

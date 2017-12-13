@@ -1,0 +1,85 @@
+﻿@model Dictionary<int, Project1.Models.Question>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/DaneStyleSheet.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Bio";
+}
+
+<!--Breadcrumb item-->
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+    <li><a href="@Url.Action("Index","FreeLance")">Freelancer</a></li>
+    <li class="active">@ViewBag.Name</li>
+</ol>
+
+<!--Display dynamic view based on viewbag-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/Images/@(ViewBag.name)/@(ViewBag.picture)" class="img-responsive" />
+        </div>
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12 text-center"><h2>@ViewBag.Name</h2></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center"><p>@ViewBag.bio</p></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="page-header">
+                <h3><a href="@ViewBag.portfolio">Visit Our Full Website!</a></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--display faqs passed through the dictionary object and reply to questions asked-->
+<br />
+<hr class="side" />
+<h3>FAQs</h3>
+<div class="panel-group" id="accordion">
+    @foreach (var item in Model)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse-@item.Value.iNumber">
+                    <h4 class="panel-title" style="display:inline;">
+                        @item.Value.sQuestion
+                    </h4> -
+                    <p class="text-muted" style="display:inline;">@item.Value.dDate</p>
+                </a>
+            </div>
+            <div id="collapse-@item.Value.iNumber" class="panel-collapse collapse">
+                <div class="panel-body">
+                    @item.Value.sAnswer
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-offset-4 col-xs-4">
+                            <a data-toggle="collapse" href="#answer-@item.Value.iNumber">Answer This Question</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="answer-@item.Value.iNumber" class="panel-collapse collapse">
+                            @Html.Partial("AnswerForm")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<!--ask a question form-->
+<div class="container">
+    <div id="">
+        @Html.Partial("Questions")
+    </div>
+</div>
