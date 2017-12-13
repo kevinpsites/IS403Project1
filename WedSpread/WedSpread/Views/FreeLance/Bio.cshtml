@@ -81,6 +81,42 @@
 <!--ask a question form-->
 <div class="container">
     <div id="">
-        @Html.Partial("Questions")
+        <!--Question form-->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Questions?</h3>
+                    @Html.BeginForm("Questions","FreeLance","POST")
+                    <form name="contactform" method="post" action="">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-xs-12 col-sm-3 col-md-3">
+                                    <input type="text" class="form-control" name="qName" maxlength="50" size="30" id="qName" placeholder="Name">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding-top: 15px;">
+                            <div class="form-group">
+                                <div class="col-xs-6">
+                                    <textarea name="comments" class="form-control message" maxlength="1000" cols="25" rows="6" id="contact" placeholder="Write your question here"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-4" style="padding-top: 15px;">
+                                <div class="col-xs-4 col-sm-offset-4 text-center center-block">
+                                    <button type="reset" value="submit" class="btn btn-primary" style="background-color: #3885c9; width: 10em;" id="panel-content">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </div>
