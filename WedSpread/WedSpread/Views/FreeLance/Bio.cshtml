@@ -1,4 +1,4 @@
-﻿@model Dictionary<int, Project1.Models.Question>
+﻿@model WedSpread.Models.Freelancer
 <link href="~/Content/Site.css" rel="stylesheet" />
 <link href="~/Content/DaneStyleSheet.css" rel="stylesheet" />
 
@@ -10,22 +10,22 @@
 <ol class="breadcrumb">
     <li><a href="@Url.Action("Index","Home")">Home</a></li>
     <li><a href="@Url.Action("Index","FreeLance")">Freelancer</a></li>
-    <li class="active">@ViewBag.Name</li>
+    <li class="active">@Model.FreelancerName</li>
 </ol>
 
 <!--Display dynamic view based on viewbag-->
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <img src="~/Images/@(ViewBag.name)/@(ViewBag.picture)" class="img-responsive" />
+            <img src="~/Images/@(Model.FreelancerPicture)" class="img-responsive" />
         </div>
 
         <div class="col-md-6">
             <div class="row">
-                <div class="col-md-12 text-center"><h2>@ViewBag.Name</h2></div>
+                <div class="col-md-12 text-center"><h2>@Model.FreelancerName</h2></div>
             </div>
             <div class="row">
-                <div class="col-md-12 text-center"><p>@ViewBag.bio</p></div>
+                <div class="col-md-12 text-center"><p>@Model.FreelancerEmail</p></div>
             </div>
 
         </div>
@@ -34,7 +34,7 @@
     <div class="row">
         <div class="col-md-12 text-center">
             <div class="page-header">
-                <h3><a href="@ViewBag.portfolio">Visit Our Full Website!</a></h3>
+                <h3><a href="@Model.FreelancerWebsite">Visit Our Full Website!</a></h3>
             </div>
         </div>
     </div>
@@ -46,28 +46,29 @@
 <hr class="side" />
 <h3>FAQs</h3>
 <div class="panel-group" id="accordion">
-    @foreach (var item in Model)
+    
+    @foreach (var item in Model.Questions)
     {
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse-@item.Value.iNumber">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse-@item.QuestionID">
                     <h4 class="panel-title" style="display:inline;">
-                        @item.Value.sQuestion
+                        @item.Question1
                     </h4> -
-                    <p class="text-muted" style="display:inline;">@item.Value.dDate</p>
+                    <p class="text-muted" style="display:inline;">@DateTime.Today</p>
                 </a>
             </div>
-            <div id="collapse-@item.Value.iNumber" class="panel-collapse collapse">
+            <div id="collapse-@item.QuestionID" class="panel-collapse collapse">
                 <div class="panel-body">
-                    @item.Value.sAnswer
+                    @item.Answer
                     <br />
                     <div class="row">
                         <div class="col-xs-offset-4 col-xs-4">
-                            <a data-toggle="collapse" href="#answer-@item.Value.iNumber">Answer This Question</a>
+                            <a data-toggle="collapse" href="#answer-@item.QuestionID">Answer This Question</a>
                         </div>
                     </div>
                     <div class="row">
-                        <div id="answer-@item.Value.iNumber" class="panel-collapse collapse">
+                        <div id="answer-@item.QuestionID" class="panel-collapse collapse">
                             @Html.Partial("AnswerForm")
                         </div>
                     </div>

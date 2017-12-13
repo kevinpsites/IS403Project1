@@ -24,7 +24,7 @@
             {
                 <li>
                     <div class="row">
-                        <a href="@Url.Action("Elevated","FreeLance")">
+                        <a href="@Url.Action("Bio","FreeLance", new { id = item.FreelancerID }, null)">
                             <div class="col-xs-2"><img src="~/Images/@(item.FreelancerPicture)" class="img-responsive center-block" style="width: 100%; padding-left: 1em;" /></div>
                             <div class="col-xs-4"><h3>@item.FreelancerName</h3></div>
                         </a>

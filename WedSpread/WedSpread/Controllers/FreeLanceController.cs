@@ -29,39 +29,13 @@ namespace Project1.Controllers
         }
 
         // GET: FreelancerBio
-        public ActionResult Bio()
+        public ActionResult Bio(int id)
         {
-           /* //question object with data
-            q1.sQuestion = "What type of music do you guys play?";
-            q1.sName = "Greg Anderson";
-            q1.dDate = "11/5/2017";
-            q1.sAnswer = "We play folk music and bluegrass band music.";
+            Freelancer freelancer = db.Freelancers.Find(id);
+            
 
-            //question object with data
-            q2.sQuestion = "Do you do drone videography?";
-            q2.sName = "Harley Dent";
-            q2.dDate = "10/27/2017";
-            q2.sAnswer = "Yes that is one of our specialites.";
 
-            //question object with data
-            q3.sQuestion = "Do you take family pictures?";
-            q3.sName = "Taylor Wells";
-            q3.dDate = "10/20/2017";
-            q3.sAnswer = "Absolutely!";
-
-            //adding question objects to dictionary
-            qs.Add(q1.iNumber, q1);
-            qs.Add(q2.iNumber, q2);
-            qs.Add(q3.iNumber, q3); */
-
-            //adding data from other method to viebag to display
-            ViewBag.name = TempData["name"];
-            ViewBag.picture = TempData["picture"];
-            ViewBag.bio = TempData["bio"];
-            ViewBag.portfolio = TempData["portfolio"];
-            ViewBag.faqs = TempData["faqs"];
-
-            return View();
+            return View(freelancer);
         }
 
         public ActionResult Elevated()
