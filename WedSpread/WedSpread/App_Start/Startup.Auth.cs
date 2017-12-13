@@ -58,11 +58,11 @@ namespace WedSpread
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "305342075669-53q37u7k6095agv5pk258gor11h09s5g.apps.googleusercontent.com",
+                ClientSecret = "2wjgI66T9JqA92WuN2HGwJXM"
+            });
         }
     }
 }
