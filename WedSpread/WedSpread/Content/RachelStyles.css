@@ -1,0 +1,23 @@
+﻿
+.titlewebspread {
+}
+
+.subtitlewebspread {
+    font-family: 'Gill Sans MT';
+    color: white;
+    width: 55%;
+}
+
+.homejumbotron {
+    background-image: url('../Images/tonsofflowers.jpg');
+}
+
+.homecaption {
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.imagebox2 {
+    padding-bottom: 5px;
+}
