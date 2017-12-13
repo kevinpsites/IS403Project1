@@ -55,68 +55,89 @@
                     <h4 class="panel-title" style="display:inline;">
                         @item.Question1
                     </h4> -
-                    <p class="text-muted" style="display:inline;">@DateTime.Today</p>
+                    <p class="text-muted" style="display:inline;">@item.User.UserEmail</p>
                 </a>
             </div>
             <div id="collapse-@item.QuestionID" class="panel-collapse collapse">
-                <div class="panel-body">
-                    @item.Answer
-                    <br />
-                    <div class="row">
-                        <div class="col-xs-offset-4 col-xs-4">
-                            <a data-toggle="collapse" href="#answer-@item.QuestionID">Answer This Question</a>
-                        </div>
+                @if (item.Answer == null)
+                {
+                    <div class="panel-body">
+                        <p>This question hasn't been answered yet!</p>
+
                     </div>
-                    <div class="row">
-                        <div id="answer-@item.QuestionID" class="panel-collapse collapse">
-                            @Html.Partial("AnswerForm")
-                        </div>
+                }
+                else
+                {
+                    <div class="panel-body">
+                        @item.Answer
+
                     </div>
-                </div>
+                }
             </div>
         </div>
     }
 </div>
 
-<!--ask a question form-->
-<div class="container">
-    <div id="">
-        <!--Question form-->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3>Questions?</h3>
-                    @Html.BeginForm("Questions","FreeLance","POST")
-                    <form name="contactform" method="post" action="">
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-xs-12 col-sm-3 col-md-3">
-                                    <input type="text" class="form-control" name="qName" maxlength="50" size="30" id="qName" placeholder="Name">
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="row" style="padding-top: 15px;">
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <textarea name="comments" class="form-control message" maxlength="1000" cols="25" rows="6" id="contact" placeholder="Write your question here"></textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-4" style="padding-top: 15px;">
-                                <div class="col-xs-4 col-sm-offset-4 text-center center-block">
-                                    <button type="reset" value="submit" class="btn btn-primary" style="background-color: #3885c9; width: 10em;" id="panel-content">Submit</button>
+@if (User.Identity.IsAuthenticated == true)
+{
+    
+    <!--ask a question form-->
+    <div class="container">
+        <div id="">
+            <!--Question form-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Questions?</h3>
+                        @using (Html.BeginForm("PostQuestions", "FreeLance", "POST"))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("UserID", Convert.ToString(Model.UserID))
+                            @Html.Hidden("FreelancerID", Convert.ToString(Model.FreelancerID))
+                            
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-3 col-md-3">
+                                        @Html.Label("Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.TextBox("Name", null, new { @class = "form-control" })
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+
+                            <div class="row" style="padding-top: 15px;">
+                                <div class="form-group">
+                                    <div class="col-xs-6">
+                                        @Html.Label("Question", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.TextArea("Question", null, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-4" style="padding-top: 15px;">
+                                    <div class="col-xs-4 col-sm-offset-4 text-center center-block">
+                                        <button type="Submit" value="submit" class="btn btn-primary" style="background-color: #3885c9; width: 10em;" id="panel-content">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        }
+                       
+                    </div>
                 </div>
             </div>
+
+
         </div>
-
-
     </div>
-</div>
+}
+else
+{
+   <div class="row">
+       <div class="col-md-4 col-md-offset-4">
+           <h4>Please @Html.ActionLink("log in","Login", "Account") to ask a question</h4>
+       </div>
+   </div>
+}
+
+

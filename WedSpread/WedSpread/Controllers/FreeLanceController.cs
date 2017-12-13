@@ -12,13 +12,41 @@ namespace Project1.Controllers
     {
         private IS403Project2Context db = new IS403Project2Context();
 
-        /*  //creation of 3 question objects to store data and creation of dictionary to store it in.
-          public static Question q1 = new Question(1);
-          public static Question q2 = new Question(2);
-          public static Question q3 = new Question(3);
-          public Dictionary<int, Question> qs = new Dictionary<int, Question>();
-          */
+        public User myUser = new WedSpread.Models.User();
+        
+        public User GetUsers()
+        {
+            
+            if (User.Identity.IsAuthenticated)
+            {
+                string myEmail = User.Identity.Name;
 
+                myUser = db.Users.SqlQuery(
+                            "SELECT * " +
+                            "From Users " +
+                            "where Users.UserEmail = '" + myEmail + "'"
+                            ).FirstOrDefault();
+
+                if (myUser == null)
+                {
+                    myUser.UserID = 0;
+                    return myUser;
+                }
+                else
+                {
+                    return myUser;
+                }
+
+            }
+            else
+            {
+                myUser.UserID = 0;
+
+                return myUser;
+            }
+        }
+        
+       
 
         // GET: FreeLance
         public ActionResult Index()
@@ -32,8 +60,9 @@ namespace Project1.Controllers
         public ActionResult Bio(int id)
         {
             Freelancer freelancer = db.Freelancers.Find(id);
-            
-
+            User userID = new WedSpread.Models.User();
+            userID = GetUsers();
+            freelancer.UserID = userID.UserID;
 
             return View(freelancer);
         }
@@ -92,9 +121,31 @@ namespace Project1.Controllers
 
         public ActionResult Questions()
         {
-            //returns partial view of questions
-            ViewBag.partial = "@Html.Partial(" + "Questions" + ")";
             return PartialView("Questions");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PostQuestions(FormCollection form)
+        {
+            Question question = new Question();
+            if (ModelState.IsValid)
+            {
+                int userID = Convert.ToInt16(form["UserID"].ToString());
+                question.User = db.Users.Find(userID);
+
+                int freelancerid = Convert.ToInt16(form["FreelancerID"].ToString());
+                question.Freelancer = db.Freelancers.Find(freelancerid);
+
+                question.Question1 = form["Question"].ToString();
+                
+                db.Questions.Add(question);
+                db.SaveChanges();
+                return RedirectToAction("Bio", new { id = freelancerid });
+            }
+
+
+            return View("Index");
         }
     }
 }
