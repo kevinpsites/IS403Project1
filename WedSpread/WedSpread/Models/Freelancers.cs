@@ -18,10 +18,10 @@ namespace WedSpread.Models
         public string FreelancePicture { get; set; }
 
         [ForeignKey("Types")]
-        public int TypeID { get; set; }
+        public int? TypeID { get; set; }
 
         [ForeignKey("Users")]
-        public int UserID { get; set; }
+        public int? UserID { get; set; }
 
     }
 }
