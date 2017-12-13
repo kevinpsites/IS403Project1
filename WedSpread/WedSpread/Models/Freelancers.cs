@@ -17,9 +17,11 @@ namespace WedSpread.Models
         public string FreelancerWebsite { get; set; }
         public string FreelancePicture { get; set; }
 
-        public virtual Type Types { get; set; }
+        [ForeignKey("Types")]
+        public int TypeID { get; set; }
 
-        public virtual Users Users { get; set; }
+        [ForeignKey("Users")]
+        public int UserID { get; set; }
 
     }
 }
