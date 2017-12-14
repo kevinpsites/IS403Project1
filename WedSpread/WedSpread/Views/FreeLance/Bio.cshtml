@@ -87,8 +87,9 @@
             <!--Question form-->
             <div class="container">
                 <div class="row">
+                    <h3>Questions?</h3>
                     <div class="col-md-12">
-                        <h3>Questions?</h3>
+                        
                         @using (Html.BeginForm("PostQuestions", "FreeLance", "POST"))
                         {
                             @Html.AntiForgeryToken()
@@ -97,19 +98,23 @@
                             
                             <div class="row">
                                 <div class="form-group">
-                                    <div class="col-xs-12 col-sm-3 col-md-3">
-                                        @Html.Label("Name", htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @Html.TextBox("Name", null, new { @class = "form-control" })
-                                    </div>
+                                    
+                                        <div class="row">
+                                            @Html.Label("Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        </div>
+                                        <div class="row">
+                                            @Html.TextBox("Name", null, new { @class = "form-control" })
+                                        </div>
                                 </div>
                             </div>
 
                             <div class="row" style="padding-top: 15px;">
                                 <div class="form-group">
-                                    <div class="col-xs-6">
-                                        @Html.Label("Question", htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @Html.TextArea("Question", null, new { @class = "form-control" })
-                                    </div>
+                                    
+                                        <div class="row">@Html.Label("Question", htmlAttributes: new { @class = "control-label col-md-2" })</div>
+                                      
+                                       <div class="row">@Html.TextArea("Question", null, new { @class = "form-control" })</div> 
+                                    
                                 </div>
                             </div>
 
