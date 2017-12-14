@@ -52,7 +52,7 @@ namespace WedSpread.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "QuestionID,Question1,Answer,FreelancerID,UserID")] Question question)
+        public ActionResult Create([Bind(Include = "QuestionID,Question1,Answer,FreelancerID,UserID")] Question question, int fID)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +114,7 @@ namespace WedSpread.Controllers
         }
 
         // GET: Questions/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int fID)
         {
             if (id == null)
             {
@@ -131,12 +131,12 @@ namespace WedSpread.Controllers
         // POST: Questions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, int fID)
         {
             Question question = db.Questions.Find(id);
             db.Questions.Remove(question);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = fID });
         }
 
         protected override void Dispose(bool disposing)

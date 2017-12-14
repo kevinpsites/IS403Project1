@@ -367,7 +367,11 @@ namespace WedSpread.Controllers
                             db.Users.Add(myUser);
                             db.SaveChanges();
                         }
+
+                       
+
                     }
+
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

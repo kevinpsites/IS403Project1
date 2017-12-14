@@ -14,6 +14,8 @@ namespace Project1.Controllers
 
         public User myUser = new WedSpread.Models.User();
 
+        
+
         public User GetUsers()
         {
 
