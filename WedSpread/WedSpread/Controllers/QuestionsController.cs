@@ -18,7 +18,7 @@ namespace WedSpread.Controllers
         public ActionResult Index(int id)
         {
             IEnumerable<Question> FreeQuestions = db.Questions.SqlQuery("SELECT * " +
-                "FROM Questions" +
+                "FROM Questions " +
                 "WHERE FreelancerID = '"  + id + "'").AsEnumerable();
             var questions = db.Questions.Include(q => q.Freelancer).Include(q => q.User);
             return View(questions.ToList());
