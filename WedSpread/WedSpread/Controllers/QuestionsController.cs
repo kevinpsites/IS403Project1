@@ -15,8 +15,11 @@ namespace WedSpread.Controllers
         private IS403Project2Context db = new IS403Project2Context();
 
         // GET: Questions
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
+            IEnumerable<Question> FreeQuestions = db.Questions.SqlQuery("SELECT * " +
+                "FROM Questions" +
+                "WHERE FreelancerID = '"  + id + "'").AsEnumerable();
             var questions = db.Questions.Include(q => q.Freelancer).Include(q => q.User);
             return View(questions.ToList());
         }
