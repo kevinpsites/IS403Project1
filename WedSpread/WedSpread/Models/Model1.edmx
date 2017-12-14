@@ -22,7 +22,7 @@
             <PropertyRef Name="QuestionID" />
           </Key>
           <Property Name="QuestionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Question1" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Answer" Type="nvarchar(max)" />
           <Property Name="FreelancerID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
@@ -156,19 +156,7 @@
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Type" Relationship="Self.FK_Freelancers_Types" FromRole="Freelancers" ToRole="Types" />
           <NavigationProperty Name="User" Relationship="Self.FK_Freelancers_Users" FromRole="Freelancers" ToRole="Users" />
-          <NavigationProperty Name="Questions" Relationship="Self.FK_Questions_Freelancers" FromRole="Freelancers" ToRole="Questions" />
-        </EntityType>
-        <EntityType Name="Question">
-          <Key>
-            <PropertyRef Name="QuestionID" />
-          </Key>
-          <Property Name="QuestionID" Type="Int32" Nullable="false" />
-          <Property Name="Question1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="FreelancerID" Type="Int32" Nullable="false" />
-          <Property Name="UserID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Freelancer" Relationship="Self.FK_Questions_Freelancers" FromRole="Questions" ToRole="Freelancers" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Questions_Users" FromRole="Questions" ToRole="Users" />
+          <NavigationProperty Name="Questions" Relationship="IS403Project2Model.FK_Questions_Freelancers" FromRole="Freelancer" ToRole="Question" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -197,8 +185,8 @@
           <Property Name="UserLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RoleID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Freelancers" Relationship="Self.FK_Freelancers_Users" FromRole="Users" ToRole="Freelancers" />
-          <NavigationProperty Name="Questions" Relationship="Self.FK_Questions_Users" FromRole="Users" ToRole="Questions" />
           <NavigationProperty Name="Role" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+          <NavigationProperty Name="Questions" Relationship="IS403Project2Model.FK_Questions_Users" FromRole="User" ToRole="Question" />
         </EntityType>
         <Association Name="FK_Freelancers_Types">
           <End Role="Types" Type="Self.Type" Multiplicity="1" />
@@ -224,30 +212,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Questions_Freelancers">
-          <End Role="Freelancers" Type="Self.Freelancer" Multiplicity="1" />
-          <End Role="Questions" Type="Self.Question" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Freelancers">
-              <PropertyRef Name="FreelancerID" />
-            </Principal>
-            <Dependent Role="Questions">
-              <PropertyRef Name="FreelancerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Questions_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="Questions" Type="Self.Question" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Questions">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Users_Roles">
           <End Role="Roles" Type="Self.Role" Multiplicity="1" />
           <End Role="Users" Type="Self.User" Multiplicity="*" />
@@ -262,7 +226,6 @@
         </Association>
         <EntityContainer Name="IS403Project2Context" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Freelancers" EntityType="Self.Freelancer" />
-          <EntitySet Name="Questions" EntityType="Self.Question" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="Types" EntityType="Self.Type" />
           <EntitySet Name="Users" EntityType="Self.User" />
@@ -274,19 +237,56 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Freelancers" EntitySet="Freelancers" />
           </AssociationSet>
-          <AssociationSet Name="FK_Questions_Freelancers" Association="Self.FK_Questions_Freelancers">
-            <End Role="Freelancers" EntitySet="Freelancers" />
-            <End Role="Questions" EntitySet="Questions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Questions_Users" Association="Self.FK_Questions_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Questions" EntitySet="Questions" />
-          </AssociationSet>
           <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="Questions" EntityType="IS403Project2Model.Question" />
+          <AssociationSet Name="FK_Questions_Freelancers" Association="IS403Project2Model.FK_Questions_Freelancers">
+            <End Role="Freelancer" EntitySet="Freelancers" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questions_Users" Association="IS403Project2Model.FK_Questions_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+          </Key>
+          <Property Name="QuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FreelancerID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Freelancer" Relationship="IS403Project2Model.FK_Questions_Freelancers" FromRole="Question" ToRole="Freelancer" />
+          <NavigationProperty Name="User" Relationship="IS403Project2Model.FK_Questions_Users" FromRole="Question" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Questions_Freelancers">
+          <End Type="IS403Project2Model.Freelancer" Role="Freelancer" Multiplicity="1" />
+          <End Type="IS403Project2Model.Question" Role="Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Freelancer">
+              <PropertyRef Name="FreelancerID" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="FreelancerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questions_Users">
+          <End Type="IS403Project2Model.User" Role="User" Multiplicity="1" />
+          <End Type="IS403Project2Model.Question" Role="Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -302,17 +302,6 @@
                 <ScalarProperty Name="FreelancerWebsite" ColumnName="FreelancerWebsite" />
                 <ScalarProperty Name="FreelancerPicture" ColumnName="FreelancerPicture" />
                 <ScalarProperty Name="TypeID" ColumnName="TypeID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Questions">
-            <EntityTypeMapping TypeName="IS403Project2Model.Question">
-              <MappingFragment StoreEntitySet="Questions">
-                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
-                <ScalarProperty Name="Question1" ColumnName="Question" />
-                <ScalarProperty Name="Answer" ColumnName="Answer" />
-                <ScalarProperty Name="FreelancerID" ColumnName="FreelancerID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -342,6 +331,17 @@
                 <ScalarProperty Name="UserFirstName" ColumnName="UserFirstName" />
                 <ScalarProperty Name="UserLastName" ColumnName="UserLastName" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="IS403Project2Model.Question">
+              <MappingFragment StoreEntitySet="Questions">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FreelancerID" ColumnName="FreelancerID" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Question1" ColumnName="Question1" />
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
