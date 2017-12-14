@@ -347,7 +347,7 @@ namespace WedSpread.Controllers
                         var givenNameClaim = externalIdentity.Result.Claims.FirstOrDefault(c => c.Type == ClaimTypes.GivenName);
 
                         
-
+                        
                         var email = emailClaim.Value;
                         var firstName = givenNameClaim.Value;
                         var lastname = lastNameClaim.Value;
@@ -357,15 +357,13 @@ namespace WedSpread.Controllers
                             "From Users " +
                             "where Users.UserEmail = '" + email + "'"
                             ).FirstOrDefault();
-
+                        
+                       
                         if (user == null)
                         {
                             User myUser = new Models.User();
                             myUser.UserEmail = email;
-                            myUser.RoleID = 3;
-                            myUser.RoleID = 2;
                             myUser.Role = db.Roles.Find(3);
-                            myUser.RoleID = 3;
                             db.Users.Add(myUser);
                             db.SaveChanges();
                         }
