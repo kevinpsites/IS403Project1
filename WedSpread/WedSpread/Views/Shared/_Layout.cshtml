@@ -23,6 +23,14 @@
                     <li>@Html.ActionLink("Freelancers", "Index", "FreeLance")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (User.Identity.IsAuthenticated == true)
+                    {
+                        if (WedSpread.Controllers.HelperController.GetRole() == 2)
+                        {
+                            <li>@Html.ActionLink("MyQuestions", "Index", "Questions", new { id = WedSpread.Controllers.HelperController.GetUser() }, null)</li>
+                        }
+                    }
+                   
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

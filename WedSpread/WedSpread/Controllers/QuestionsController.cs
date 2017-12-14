@@ -85,7 +85,7 @@ namespace WedSpread.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "QuestionID,Question1,Answer,FreelancerID,UserID")] Question question)
+        public ActionResult Edit([Bind(Include = "QuestionID,Question1,Answer")] Question question)
         {
             if (ModelState.IsValid)
             {
