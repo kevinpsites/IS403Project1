@@ -11,8 +11,8 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            Questions
+        <th> 
+            @Html.DisplayNameFor(model => model.Question1)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Answer)
@@ -36,7 +36,7 @@
             @Html.DisplayFor(modelItem => item.User.UserEmail)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.QuestionID }) |
+            @Html.ActionLink("Answer", "Edit", new { id=item.QuestionID }) |
             @Html.ActionLink("Details", "Details", new { id=item.QuestionID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.QuestionID })
         </td>
