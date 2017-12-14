@@ -15,10 +15,13 @@ namespace WedSpread.Controllers
         private IS403Project2Context db = new IS403Project2Context();
 
         // GET: Questions
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            var questions = db.Questions.Include(q => q.Freelancer).Include(q => q.User);
-            return View(questions.ToList());
+            IEnumerable<Question> FreeQuestions = db.Database.SqlQuery<Question>("SELECT * " +
+                 "FROM Questions " +
+                 "WHERE FreelancerID = '" + id + "'").AsEnumerable();
+
+            return View(FreeQuestions);
         }
 
         // GET: Questions/Details/5
@@ -85,13 +88,25 @@ namespace WedSpread.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "QuestionID,Question1,Answer,FreelancerID,UserID")] Question question)
+        public ActionResult Edit(FormCollection form)
         {
+            Question question = new Question();
+
             if (ModelState.IsValid)
             {
-                db.Entry(question).State = EntityState.Modified;
+                question.QuestionID = Convert.ToInt16(form["QuestionID"].ToString());
+                question.FreelancerID = Convert.ToInt16(form["FreelancerID"].ToString());
+                question.UserID = Convert.ToInt16(form["UserID"].ToString());
+                question.Answer = form["Answer"].ToString();
+             
+                db.Database.ExecuteSqlCommand(
+                    "Update Questions " +
+                    "Set Questions.Answer = '" + question.Answer + "' " +
+                    "where Questions.QuestionID = '" + question.QuestionID + "'"
+                    );
+
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = question.FreelancerID });
             }
             ViewBag.FreelancerID = new SelectList(db.Freelancers, "FreelancerID", "FreelancerName", question.FreelancerID);
             ViewBag.UserID = new SelectList(db.Users, "UserID", "UserEmail", question.UserID);

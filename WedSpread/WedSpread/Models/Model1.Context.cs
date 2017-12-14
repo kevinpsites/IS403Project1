@@ -26,9 +26,9 @@ namespace WedSpread.Models
         }
     
         public virtual DbSet<Freelancer> Freelancers { get; set; }
-        public virtual DbSet<Question> Questions { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Type> Types { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Question> Questions { get; set; }
     }
 }
